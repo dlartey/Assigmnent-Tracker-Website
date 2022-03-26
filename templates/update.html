@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+	<h1>Update Assignment...</h1>
+	<br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form action="/update/{{ update_assignment.id }}" method="POST">
+		{{ form.hidden_tag() }}
+
+		{{ form.title.label(class="form-label") }}
+
+		{{ form.title(class="form-control", value=update_assignment.title) }}
+		<br/>
+
+		{{ form.code.label(class="form-label") }}
+
+		{{ form.code(class="form-control", value=update_assignment.code) }}
+		<br/>
+
+		{{ form.deadline.label(class="form-label") }}
+
+		{{ form.deadline(class="form-control", value=update_assignment.deadline) }}
+		<br/>
+
+		{{ form.description.label(class="form-label") }}
+
+		{{ form.description(class="form-control", value=update_assignment.description) }}
+		<br/>
+		
+		{{ form.complete.label(class="form-label") }}
+
+		{{ form.complete(class="form-control", value=update_assignment.completed) }}
+		<br/>
+
+		
+		{{ form.submit(class="btn btn-secondary") }}
+
+
+	</form>
+</div>
+<br/><br/><br/>
+
+{% endblock %}

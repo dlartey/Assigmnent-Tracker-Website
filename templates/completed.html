@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Completed Assignments</h1>
+
+<table class="table table-hover table-bordered table-striped">
+
+    {% for data in complete %}
+        <tr>
+        <td>{{ data.id }}. <a href="{{ url_for('update', id=data.id)}}">{{ data.title }}</a> - {{ data.code }} - {{ data.deadline }}  - {{ data.description }} - {{ data.completed }}</td>
+        </tr>
+    {% endfor %}
+    
+    </table>
+{% endblock %}
